@@ -2,3 +2,4 @@
 *.swp
 theme/
 output/
+cache/
