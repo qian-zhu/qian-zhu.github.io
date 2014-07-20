@@ -3,3 +3,4 @@
 theme/
 cache/
 *.pid
+*.log
