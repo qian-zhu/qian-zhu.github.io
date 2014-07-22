@@ -4,3 +4,4 @@ theme/
 cache/
 *.pid
 *.log
+output/

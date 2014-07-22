@@ -19,6 +19,7 @@ TRANSLATION_FEED_ATOM = None
 
 THEME='pelican-bootstrap3'
 CUSTOM_CSS = 'theme/css/custom.css'
+STATIC_PATHS = ["images", ]
 # Blogroll
 #LINKS = (('Pelican', 'http://getpelican.com/'),
          #('Python.org', 'http://python.org/'),
