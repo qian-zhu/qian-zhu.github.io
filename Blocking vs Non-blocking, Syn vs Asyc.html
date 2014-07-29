@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Techology & Finance</title>
+    <title>Blocking vs Non-blocking, Syn vs Asyc</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -11,10 +11,10 @@
 
     <!-- Open Graph tags -->
 
-            <meta property="og:type" content="website"/>
-            <meta property="og:title" content="Techology & Finance"/>
-            <meta property="og:url" content=""/>
-            <meta property="og:description" content="Techology & Finance"/>
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Blocking vs Non-blocking, Syn vs Asyc"/>
+            <meta property="og:url" content="/Blocking vs Non-blocking, Syn vs Asyc.html"/>
+            <meta property="og:description" content="Discuss these definition"/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
@@ -44,7 +44,7 @@
                         <li >
                             <a href="/category/javascript.html">Javascript</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="/category/system.html">System</a>
                         </li>
                         <li >
@@ -63,25 +63,44 @@
     <div class="row">
         <div class="col-lg-9">
     <section id="content">
-        <h1>Archives for Techology & Finance</h1>
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/Blocking vs Non-blocking, Syn vs Asyc.html"
+                       rel="bookmark"
+                       title="Permalink to Blocking vs Non-blocking, Syn vs Asyc">
+                        Blocking vs Non-blocking, Syn vs Asyc
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Sat 26 July 2014
+    </span>
 
-        <dl>
-                <dt>Sat 26 July 2014</dt>
-                <dd><a href='Blocking vs Non-blocking, Syn vs Asyc.html'>Blocking vs Non-blocking, Syn vs Asyc</a></dd>
-                <dt>Sat 26 July 2014</dt>
-                <dd><a href='Inheritance in javascript.html'>Inheritance in js</a></dd>
-                <dt>Sat 26 July 2014</dt>
-                <dd><a href='event loop.html'>Event Loop</a></dd>
-                <dt>Tue 22 July 2014</dt>
-                <dd><a href='javascript level.html'>javascript level</a></dd>
-                <dt>Sat 19 July 2014</dt>
-                <dd><a href='object in javascript.html'>Object in js</a></dd>
-                <dt>Sat 19 July 2014</dt>
-                <dd><a href='pratical_vim.html'>Pratical Vim</a></dd>
-                <dt>Sat 19 July 2014</dt>
-                <dd><a href='publish-pelican.html'>How to publish a Pelican site in the form  of User Pages?</a></dd>
-        </dl>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/system.html">System</a>
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Simplified matrix of basic Linux I/O models</h1>
+<p><img alt="Simplified matrix of basic Linux I/O models" src="images/System/io_type.gif" /></p>
+<h1>Blocking vs Non-blocking</h1>
+<p>这两者的区分仅仅在于是否会阻塞当前进程上。如果会阻塞就是blocking,如果不会阻塞，无论是采用什么方法，都属于non-blocking.</p>
+<p>比如在Linux中，通过fcntl可以设置O_NONBLOCK。当文件当前不可读/可写时，自动返回一个错误值。这属于sync and non-blocking.</p>
+<h1>Asynchronous vs Synchronous</h1>
+<p>区别主要是同步的方式。Synchronous通过时钟同步，Asynchronous通过信号同步。Asynchronous and blocking I/O也是存在的。比如Linux中select的系统调用。</p>
+<p>select监视若干个文件并且在background运行一个timer，如果文件中有一个可以读/写，或者timer到期，都返回。会阻塞当前进程，但是确实Async</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
     </section>
+
         </div>
         <div class="col-lg-3 well well-sm" id="sidebar">
 <aside>

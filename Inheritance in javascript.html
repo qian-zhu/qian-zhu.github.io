@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Inheritance in js</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Inheritance in js"/>
+            <meta property="og:url" content="/Inheritance in javascript.html"/>
+            <meta property="og:description" content="Inheritance in javacript"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="" class="navbar-brand">Techology & Finance</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/javascript.html">Javascript</a>
+                        </li>
+                        <li >
+                            <a href="/category/system.html">System</a>
+                        </li>
+                        <li >
+                            <a href="/category/tools.html">Tools</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- /.navbar -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/Inheritance in javascript.html"
+                       rel="bookmark"
+                       title="Permalink to Inheritance in js">
+                        Inheritance in js
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Sat 26 July 2014
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/javascript.html">javascript</a>
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>JavaScript is a <strong>class-free</strong>, <strong>object-oriented</strong> language, and as such, it uses <strong>prototypal inheritance</strong> instead of classical inheritance. <a href="http://www.crockford.com/javascript/inheritance.html">1</a></p>
+<p>有几点关键的:</p>
+<p>Javascript没有class的概念，在class based的语言中(Python,java,C++)，开始先定义一个class，然后再跟进这个class实例化一个object。在JS中，object是从另一个object创建（不是实例化）的。</p>
+<p>比如:</p>
+<div class="highlight"><pre><span class="k">function</span><span class="w"> </span><span class="nf">Vehicle</span><span class="p">(</span>hasEngine,hasWheels<span class="p">)</span><span class="w"></span>
+<span class="p">{</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">hasEngine</span> <span class="p">=</span> <span class="n">hasEngine</span> <span class="o">||</span> <span class="n">false</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">hasWheels</span> <span class="p">=</span> <span class="n">hasWheels</span> <span class="o">||</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">var</span> <span class="n">v</span> <span class="p">=</span> <span class="n">Vehicle</span><span class="p">(</span><span class="n">true</span><span class="p">,</span><span class="n">true</span><span class="p">);</span>
+</pre></div>
+
+
+<p>这里Vehicle是一个function object. v是一个通过这个function object创建的object.</p>
+<p>Prototype构成了一个chain. 用于实现继承。比如</p>
+<div class="highlight"><pre><span class="k">function</span><span class="w"> </span><span class="nf">Car</span><span class="p">(</span>make,model,hp<span class="p">)</span><span class="w"></span>
+<span class="p">{</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">hp</span> <span class="p">=</span> <span class="n">hp</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">make</span> <span class="p">=</span> <span class="n">make</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">model</span> <span class="p">=</span> <span class="n">model</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Car</span><span class="p">.</span><span class="n">prototype</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Vehicle</span><span class="p">(</span><span class="n">true</span><span class="p">,</span><span class="n">true</span><span class="p">);</span> <span class="o">//</span><span class="n">Car</span><span class="p">.</span><span class="n">prototype</span> 指向<span class="n">Vehicle</span>
+<span class="n">Car</span><span class="p">.</span><span class="n">prototype</span><span class="p">.</span><span class="n">constructor</span> <span class="p">=</span> <span class="n">Car</span><span class="p">;</span><span class="o">//</span>使得<span class="n">instance</span> <span class="n">object</span>的<span class="n">constructor</span>指向<span class="n">Car</span>
+<span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Car</span><span class="p">(</span><span class="s">&#39;audi&#39;</span><span class="p">,</span><span class="s">&#39;a6&#39;</span><span class="p">,</span>120<span class="p">);</span>
+<span class="n">console</span><span class="p">.</span><span class="nb">log</span><span class="p">(</span><span class="n">car</span><span class="p">.</span><span class="n">hasWheels</span><span class="p">)</span> <span class="o">//</span>这里输出<span class="n">true</span>
+</pre></div>
+
+
+<p>可以看到这里prototype based实现继承的一个好处，能够给被继承的object传参数。当然在class based的方式中也可以通过构造函数，改变父类中的值。但是没这么清楚，隔离。</p>
+<p>一个object的prototype是所有被这个object创建的instance object的公共部分。</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-lg-3 well well-sm" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+            <li class="list-group-item"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+                <li class="list-group-item tag-1">
+                    <a href="/tag/javascript.html">
+                        javascript
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/system.html">
+                        System
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/vim.html">
+                        Vim
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/tools.html">
+                        Tools
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/pelican.html">
+                        Pelican
+                    </a>
+                </li>
+        </ul>
+    </section>
+</aside>        </div>
+    </div>
+</div>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+</body>
+</html>
