@@ -52,7 +52,7 @@ Suppose our cursor is positioned on the "h", and we want to delete the word "nig
 
 Method 3 is the best one. 
 
-# Operator + Motion = Action
+# Register + Operator + Motion = Action
 d\{motion\} :
 
 * dl : delete a single character
@@ -60,3 +60,33 @@ d\{motion\} :
 * dap : delete a paragraphy
 
 d,c,y 都属于operator, l,aw,ap属于motion，说明operator作用的对象。vim基本的语法就是operator + motion.
+
+* "ayy: yank current line to register a
+* "ayiw: yank current inner work to register a
+## Operator:
+
+* a : around 删除word,包括周边空格
+* i : inner 删除字,但是不包括周围空格
+
+
+## Register
+### The Unnamed Register ("")
+默认寄存器就是"", 所以**dd**相当于**""dd**
+
+###The Yank Register : "0
+yank register. 顾名思义就是在yank使会更新的register. 这个的好处就是不会被dd,diw这些命令覆盖了之前yank的内容。
+
+### The black hole register("_)
+A place from which nothing returns. 
+
+### More Registers:
+
+* "% : Name of the current file
+* "# : Name of the alternate file
+* ". : Last inserted text
+* ": : Last Ex command
+* "/ : Last search pattern -- it can be set explicitly using *:let*
+
+### Commands
+
+* reg : show all register content
