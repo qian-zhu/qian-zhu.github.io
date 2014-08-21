@@ -1,7 +1,6 @@
 Title: Inheritance in js 
 Date: 2014-07-26
 Tags: javascript
-Category:Javascript
 Slug: Inheritance in javascript
 Summary: Inheritance in javacript 
 

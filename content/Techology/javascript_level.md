@@ -1,7 +1,6 @@
 Title: javascript level 
 Date: 2014-07-22
 Tags: javascript 
-Category: Javascript
 Slug: javascript level
 Summary: javascript level
 

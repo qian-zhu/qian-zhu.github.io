@@ -1,7 +1,6 @@
 Title: Blocking vs Non-blocking, Syn vs Asyc 
 Date: 2014-07-26
 Tags: System 
-Category: System
 Slug: Blocking vs Non-blocking, Syn vs Asyc 
 Summary: Discuss these definition 
 
