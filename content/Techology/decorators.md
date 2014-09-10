@@ -1,7 +1,6 @@
 Title: Decorators in Python 
 Date: 2014-08-07
 Tags: python, decorators, closure
-Category:python
 Slug: decorators in python 
 Summary: 什么是decorators,以及Python的哪些特性使得可以有decorator这个功能和概念? 
 
@@ -51,7 +50,18 @@ decorated = outer(foo)
 ret = decorated() #before function
 print ret #2
 ```
-而且foo.\_\_name\_\_就是代表函数的名字。这样使得decorator返回的被装饰后的函数取代了原来的函数。
+而且foo.\_\_name\_\_就是代表函数的名字。通过
+```python
+from functools import wraps 
+def outer(func):
+	@wraps(func)
+    def inner():
+        print "before function"
+        ret = func()
+        return ret+1
+    return inner
+```
+这样使得decorator返回的被装饰后的函数的名字function.\_\_name\_\_和原函数相同。
 
 
 ## *args and **kwargs

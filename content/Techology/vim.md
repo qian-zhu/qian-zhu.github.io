@@ -1,7 +1,6 @@
 Title: Pratical Vim
 Date: 2014-07-19
 Tags: Tools, Vim 
-Category: Tools
 Slug: pratical_vim
 Summary: The vim way
 

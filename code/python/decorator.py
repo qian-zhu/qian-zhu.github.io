@@ -1,3 +1,4 @@
+from functools import wraps
 def outer():
     x = 1
     def inner():
@@ -11,6 +12,7 @@ foo()
 print [c.cell_contents for c in foo.__closure__]
 
 def outer(func):
+    @wraps(func)
     def inner():
         print "before function"
         ret = func()
@@ -22,6 +24,12 @@ def foo():
 
 decorated = outer(foo)
 ret = decorated() #before function
+print decorated.__name__
 print ret #2
 
-print foo.__name__
+@outer
+def boo():
+    return 2
+
+print boo() 
+print boo.__name__ 

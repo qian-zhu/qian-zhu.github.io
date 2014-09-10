@@ -1,7 +1,6 @@
 Title: How to publish a Pelican site in the form  of User Pages? 
 Date: 2014-07-19
 Tags: Tools, Pelican 
-Category: Tools
 Slug: publish-pelican 
 Summary:How to publish a Pelican site in the form  of User Pages 
 

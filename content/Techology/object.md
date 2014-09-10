@@ -1,7 +1,6 @@
 Title: Object in js 
 Date: 2014-07-19
 Tags: javascript, Vim 
-Category:Javascript
 Slug: object in javascript
 Summary: object in javacript 
 
