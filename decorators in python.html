@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Decorators in Python</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Decorators in Python"/>
+            <meta property="og:url" content="/decorators in python.html"/>
+            <meta property="og:description" content="什么是decorators,以及Python的哪些特性使得可以有decorator这个功能和概念?"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Techology & Finance ATOM Feed"/>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="" class="navbar-brand">Techology & Finance</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/javascript.html">Javascript</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/python.html">python</a>
+                        </li>
+                        <li >
+                            <a href="/category/system.html">System</a>
+                        </li>
+                        <li >
+                            <a href="/category/tools.html">Tools</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- /.navbar -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/decorators in python.html"
+                       rel="bookmark"
+                       title="Permalink to Decorators in Python">
+                        Decorators in Python
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Thu 07 August 2014
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/decorators.html">decorators</a>
+        /
+	<a href="/tag/closure.html">closure</a>
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2>Closure</h2>
+<p>Python 中有decorator这个概念首先要归功于python支持<strong>function closure</strong> : inner functions defined in non-global scope remember what their enclosing namespaces looked like at definition time. </p>
+<p>比如:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="k">print</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+
+<p>根据python的variable lifetime, x是outer的local variable.那么当outer返回后x应该不存在了。但在这里我们通过 </p>
+<div class="highlight"><pre><span class="k">print</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">cell_contents</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">foo</span><span class="o">.</span><span class="n">__closure__</span><span class="p">]</span>
+</pre></div>
+
+
+<p>可以看到x还是存在的。被记录到了inner function的__closure__这个属性里面.</p>
+<h2>Function is an object</h2>
+<p>其次就是在python中，everything is object. 函数也是object, 而且是first class object. 比如:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">pass</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">__class__</span> <span class="c"># &lt;type &#39;function&#39;&gt;</span>
+<span class="nb">issubclass</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="nb">object</span><span class="p">)</span> <span class="c"># True</span>
+</pre></div>
+
+
+<p>这就表示function也可以作为普通的object传给另一个function作为参数.
+比如:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">outer</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="k">print</span> <span class="s">&quot;before function&quot;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span>
+
+<span class="n">decorated</span> <span class="o">=</span> <span class="n">outer</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">decorated</span><span class="p">()</span> <span class="c">#before function</span>
+<span class="k">print</span> <span class="n">ret</span> <span class="c">#2</span>
+</pre></div>
+
+
+<p>而且foo.__name__就是代表函数的名字。这样使得decorator返回的被装饰后的函数取代了原来的函数。</p>
+<h2><em>args and </em>*kwargs</h2>
+<p>如果没有这两个可以代表任意函数参数的变量，那么每一个function都是要事先确定好参数的个数，decorator的作用范围变窄了。
+比如:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c"># some code</span>
+        <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span>
+<span class="nd">@logger</span>
+<span class="k">def</span> <span class="nf">foo1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+
+
+<p>比如这里被logger decorate的函数参数可以是任意的。</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-lg-3 well well-sm" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+            <li class="list-group-item"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+                <li class="list-group-item tag-1">
+                    <a href="/tag/javascript.html">
+                        javascript
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/vim.html">
+                        Vim
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/tools.html">
+                        Tools
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/system.html">
+                        System
+                    </a>
+                </li>
+                <li class="list-group-item tag-2">
+                    <a href="/tag/python.html">
+                        python
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/dictionary.html">
+                        dictionary
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/closure.html">
+                        closure
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/pelican.html">
+                        Pelican
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/decorators.html">
+                        decorators
+                    </a>
+                </li>
+        </ul>
+    </section>
+</aside>        </div>
+    </div>
+</div>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+</body>
+</html>
