@@ -43,17 +43,8 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                        <li >
-                            <a href="/category/javascript.html">Javascript</a>
-                        </li>
                         <li class="active">
-                            <a href="/category/python.html">python</a>
-                        </li>
-                        <li >
-                            <a href="/category/system.html">System</a>
-                        </li>
-                        <li >
-                            <a href="/category/tools.html">Tools</a>
+                            <a href="/category/techology.html">Techology</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -144,7 +135,19 @@
 </pre></div>
 
 
-<p>而且foo.__name__就是代表函数的名字。这样使得decorator返回的被装饰后的函数取代了原来的函数。</p>
+<p>而且foo.__name__就是代表函数的名字。通过</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span> 
+<span class="k">def</span> <span class="nf">outer</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="k">print</span> <span class="s">&quot;before function&quot;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">inner</span>
+</pre></div>
+
+
+<p>这样使得decorator返回的被装饰后的函数的名字function.__name__和原函数相同。</p>
 <h2><em>args and </em>*kwargs</h2>
 <p>如果没有这两个可以代表任意函数参数的变量，那么每一个function都是要事先确定好参数的个数，decorator的作用范围变窄了。
 比如:</p>
@@ -175,13 +178,18 @@
 
             <li class="list-group-item"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
                 <li class="list-group-item tag-1">
+                    <a href="/tag/python.html">
+                        python
+                    </a>
+                </li>
+                <li class="list-group-item tag-1">
                     <a href="/tag/javascript.html">
                         javascript
                     </a>
                 </li>
-                <li class="list-group-item tag-2">
-                    <a href="/tag/vim.html">
-                        Vim
+                <li class="list-group-item tag-1">
+                    <a href="/tag/tools.html">
+                        tools
                     </a>
                 </li>
                 <li class="list-group-item tag-2">
@@ -190,18 +198,13 @@
                     </a>
                 </li>
                 <li class="list-group-item tag-2">
-                    <a href="/tag/python.html">
-                        python
-                    </a>
-                </li>
-                <li class="list-group-item tag-2">
-                    <a href="/tag/tools.html">
-                        Tools
+                    <a href="/tag/vim.html">
+                        Vim
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="/tag/dictionary.html">
-                        dictionary
+                    <a href="/tag/closure.html">
+                        closure
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
@@ -215,8 +218,18 @@
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="/tag/closure.html">
-                        closure
+                    <a href="/tag/git.html">
+                        git
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/dictionary.html">
+                        dictionary
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="/tag/decorator.html">
+                        decorator
                     </a>
                 </li>
         </ul>
