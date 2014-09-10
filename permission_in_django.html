@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Pratical Vim</title>
+    <title>Permission in Django</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,9 +12,9 @@
     <!-- Open Graph tags -->
 
             <meta property="og:type" content="article"/>
-            <meta property="og:title" content="Pratical Vim"/>
-            <meta property="og:url" content="/pratical_vim.html"/>
-            <meta property="og:description" content="The vim way"/>
+            <meta property="og:title" content="Permission in Django"/>
+            <meta property="og:url" content="/permission_in_django.html"/>
+            <meta property="og:description" content="Django中permission的使用"/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
@@ -62,10 +62,10 @@
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/pratical_vim.html"
+                    <a href="/permission_in_django.html"
                        rel="bookmark"
-                       title="Permalink to Pratical Vim">
-                        Pratical Vim
+                       title="Permalink to Permission in Django">
+                        Permission in Django
                     </a>
                 </h1>
             </header>
@@ -75,172 +75,26 @@
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="icon-calendar"></i>Sat 19 July 2014
+        <i class="icon-calendar"></i>Wed 10 September 2014
     </span>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="/tag/tools.html">Tools</a>
+	<a href="/tag/python.html">Python</a>
         /
-	<a href="/tag/vim.html">Vim</a>
+	<a href="/tag/django.html">Django</a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <h1>What is the idea behind vim?</h1>
-<blockquote>
-<p>Vim is optimized for repetition.Act,repeat, reverse </p>
-</blockquote>
-<p>vim不是一大堆插件以及一大堆的命令。很多人觉得vim难以上手也是因为不了解vim的精髓。Dot command 是vim中处理重复操作基本命令.需要注意的是"."重复上一组<strong>修改</strong>而不是<strong>跳转</strong>的动作</p>
-<p>举个例子:</p>
-<table>
-<thead>
-<tr>
-<th>Keystrokes</th>
-<th>Buffer Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>{start}</td>
-<td>...We're waiting for content before the site can go live If you are <strong>c</strong>ontent with this, let's go ahead with it We'll launch as soon as we have the content</td>
-</tr>
-<tr>
-<td>*</td>
-<td>...We're waiting for <strong>content</strong> before the site can go live.If you are <strong>content</strong> with this, let's go ahead with it.We'll launch as soon as we have the <strong>content</strong>...</td>
-</tr>
-<tr>
-<td>cwcopy<Esc></td>
-<td>...We're waiting for content before the site can go live.If you are content with this, let's go ahead with it.We'll launch as soon as we have the <strong>copy</strong>...</td>
-</tr>
-<tr>
-<td>n</td>
-<td>...We're waiting for <strong>content</strong> before the site can go live.If you are <strong>content</strong> with this, let's go ahead with it.We'll launch as soon as we have the copy...</td>
-</tr>
-<tr>
-<td>.</td>
-<td>...We're waiting for <strong>copy</strong> before the site can go live.If you are content with this, let's go ahead with it.We'll launch as soon as we have the copy...</td>
-</tr>
-</tbody>
-</table>
-<h1>Compose Repeatable Changes</h1>
-<p>Suppose our cursor is positioned on the "h", and we want to delete the word "nigh"</p>
-<blockquote>
-<p>The end is nigh</p>
-</blockquote>
-<h3>Method 1:</h3>
-<table>
-<thead>
-<tr>
-<th>Keystrokes</th>
-<th>Buffer Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>{start}</td>
-<td>The end is nig<strong>h</strong></td>
-</tr>
-<tr>
-<td>db</td>
-<td>The end is h</td>
-</tr>
-<tr>
-<td>x</td>
-<td>The end is</td>
-</tr>
-<tr>
-<td>"." repeat "x"</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3>Method 2:</h3>
-<table>
-<thead>
-<tr>
-<th>Keystrokes</th>
-<th>Buffer Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>{start}</td>
-<td>The end is nig<strong>h</strong></td>
-</tr>
-<tr>
-<td>b</td>
-<td>The end is nigh</td>
-</tr>
-<tr>
-<td>dw</td>
-<td>The end is</td>
-</tr>
-<tr>
-<td>"." repeat "dw"</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3>Method 3:</h3>
-<table>
-<thead>
-<tr>
-<th>Keystrokes</th>
-<th>Buffer Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>{start}</td>
-<td>The end is nig<strong>h</strong></td>
-</tr>
-<tr>
-<td>daw</td>
-<td>The end is</td>
-</tr>
-<tr>
-<td>"." repeat "daw"</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Method 3 is the best one. </p>
-<h1>Register + Operator + Motion = Action</h1>
-<p>d{motion} :</p>
-<ul>
-<li>dl : delete a single character</li>
-<li>daw: delete a complete word</li>
-<li>dap : delete a paragraphy</li>
-</ul>
-<p>d,c,y 都属于operator, l,aw,ap属于motion，说明operator作用的对象。vim基本的语法就是operator + motion.</p>
-<ul>
-<li>"ayy: yank current line to register a</li>
-<li>"ayiw: yank current inner work to register a</li>
-</ul>
-<h2>Operator:</h2>
-<ul>
-<li>a : around 删除word,包括周边空格</li>
-<li>i : inner 删除字,但是不包括周围空格</li>
-</ul>
-<h2>Register</h2>
-<h3>The Unnamed Register ("")</h3>
-<p>默认寄存器就是"", 所以<strong>dd</strong>相当于<strong>""dd</strong></p>
-<h3>The Yank Register : "0</h3>
-<p>yank register. 顾名思义就是在yank使会更新的register. 这个的好处就是不会被dd,diw这些命令覆盖了之前yank的内容。</p>
-<h3>The black hole register("_)</h3>
-<p>A place from which nothing returns. </p>
-<h3>More Registers:</h3>
-<ul>
-<li>"% : Name of the current file</li>
-<li>"# : Name of the alternate file</li>
-<li>". : Last inserted text</li>
-<li>": : Last Ex command</li>
-<li>"/ : Last search pattern -- it can be set explicitly using <em>:let</em></li>
-</ul>
-<h3>Commands</h3>
-<ul>
-<li>reg : show all register content</li>
-</ul>
+                <p>Django的permission系统即可以针对一个Model,也可以针对一个Model的Instance.</p>
+<p>django.contrib.auth.models中有User这个Model.其中有一个ManyToMany relationship to django.contrib.auth.models.Permission的field: user_permissions</p>
+<p>class models.User中有</p>
+<div class="highlight"><pre><span class="n">has_perm</span><span class="p">(</span><span class="n">perm</span><span class="p">,</span><span class="n">object</span><span class="p">=</span><span class="n">None</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Returns True if the user has the specified permission, where perm is in the format "<app label>.<permission codename>". If the user is inactive, this method will always return False.</p>
+<p>If <strong>obj</strong> is passed in, this method won’t check for a <strong>permission</strong> for the model, but for this <strong>specific object</strong>.</p>
             </div>
             <!-- /.entry-content -->
         </article>

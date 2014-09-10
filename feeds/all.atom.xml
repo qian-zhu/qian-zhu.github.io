@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Techology &amp; Finance</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2014-08-21T00:00:00+02:00</updated><entry><title>Git小技巧.md</title><link href="/gitxiao-ji-qiao-md.html" rel="alternate"></link><updated>2014-08-21T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-08-21:gitxiao-ji-qiao-md.html</id><summary type="html">&lt;ol&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Techology &amp; Finance</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2014-09-10T00:00:00+02:00</updated><entry><title>Permission in Django</title><link href="/permission_in_django.html" rel="alternate"></link><updated>2014-09-10T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-09-10:permission_in_django.html</id><summary type="html">&lt;p&gt;Django的permission系统即可以针对一个Model,也可以针对一个Model的Instance.&lt;/p&gt;
+&lt;p&gt;django.contrib.auth.models中有User这个Model.其中有一个ManyToMany relationship to django.contrib.auth.models.Permission的field: user_permissions&lt;/p&gt;
+&lt;p&gt;class models.User中有&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;has_perm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Returns True if the user has the specified permission, where perm is in the format "&lt;app label&gt;.&lt;permission codename&gt;". If the user is inactive, this method will always return False.&lt;/p&gt;
+&lt;p&gt;If &lt;strong&gt;obj&lt;/strong&gt; is passed in, this method won’t check for a &lt;strong&gt;permission&lt;/strong&gt; for the model, but for this &lt;strong&gt;specific object&lt;/strong&gt;.&lt;/p&gt;</summary><category term="Python"></category><category term="Django"></category></entry><entry><title>Git小技巧.md</title><link href="/gitxiao-ji-qiao-md.html" rel="alternate"></link><updated>2014-08-21T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-08-21:gitxiao-ji-qiao-md.html</id><summary type="html">&lt;ol&gt;
 &lt;li&gt;git push origin :temp  -- 删除remote的temp branch。意思是用空的branch替换temp branch&lt;/li&gt;
 &lt;/ol&gt;</summary><category term="git"></category><category term="tools"></category></entry><entry><title>decorator application context</title><link href="/decorator%20application%20context.html" rel="alternate"></link><updated>2014-08-12T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-08-12:decorator application context.html</id><summary type="html">&lt;h3&gt;@precondition&lt;/h3&gt;
 &lt;h3&gt;@postcondition&lt;/h3&gt;
