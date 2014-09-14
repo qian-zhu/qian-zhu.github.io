@@ -86,6 +86,15 @@ has_perm(perm,object=None)
 如果这里的object被传入，那么这个函数将检查这个object有没有这个permission.
 
 
+##3. Custom model field
+首先要明白什么是model的field,django官方文档说的很好:
+>The simplest way to think of a model field is that it provides a way to take a normal Python object – string, boolean, datetime, or something more complex like Hand – and convert it to and from a format that is useful when dealing with the database (and serialization, but, as we’ll see later, that falls out fairly naturally once you have the database side under control).
+
+就是一个interface或者channel，专门处理python本身的对象和database数据之间的转换
+
+
+
+
 
 [1]: https://docs.djangoproject.com/en/1.6/topics/auth/default/
 
