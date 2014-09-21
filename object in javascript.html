@@ -3,34 +3,42 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Object in js</title>
+    <title>Object in js - Techology & Finance</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
 
     <!-- Open Graph tags -->
-
+        <meta property="og:site_name" content="Techology & Finance" />
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Object in js"/>
             <meta property="og:url" content="/object in javascript.html"/>
             <meta property="og:description" content="object in javacript"/>
+            <meta property="article:published_time" content="2014-07-19" />
+                <meta property="article:section" content="Javascript" />
+                <meta property="article:tag" content="javascript" />
+                <meta property="article:tag" content="Vim" />
+                <meta property="article:author" content="Qian Zhu" />
+
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="/theme/css/pygments.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
-    <!-- JavaScript plugins (requires jQuery) -->
-    <script src="http://code.jquery.com/jquery.js"></script>
+        <link href="/theme/css/custom.css" rel="stylesheet">
 
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Techology & Finance ATOM Feed"/>
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -39,7 +47,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="" class="navbar-brand">Techology & Finance</a>
+            <a href="/" class="navbar-brand">
+Techology & Finance            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -50,20 +59,24 @@
                             <a href="/category/python.html">Python</a>
                         </li>
                         <li >
-                            <a href="/category/techology.html">Techology</a>
+                            <a href="/category/system.html">System</a>
+                        </li>
+                        <li >
+                            <a href="/category/tools.html">Tools</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-</nav>
-<!-- /.navbar -->
+</div> <!-- /.navbar -->
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-sm-9">
+
     <section id="content">
         <article>
             <header class="page-header">
@@ -81,7 +94,7 @@
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="icon-calendar"></i>Sat 19 July 2014
+        <i class="fa fa-calendar"></i><time datetime="2014-07-19T00:00:00"> Sat 19 July 2014</time>
     </span>
 
 
@@ -90,6 +103,7 @@
 	<a href="/tag/javascript.html">javascript</a>
         /
 	<a href="/tag/vim.html">Vim</a>
+    
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <h1>General</h1>
@@ -132,11 +146,11 @@ All dynamically typed languages need a strong typing system at runtime or else t
 
 
 <p>这里lisa.greeding()会提示找不到这个method的错误。但是如果我们这样修改:</p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">hi</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Person</span><span class="p">(</span><span class="n">true</span><span class="p">,</span>44<span class="p">,</span><span class="s">&#39;male&#39;</span><span class="p">);</span>
-<span class="n">hi</span><span class="p">.</span><span class="n">greeding</span> <span class="p">=</span> <span class="k">function</span><span class="p">(){</span>
-    <span class="n">console</span><span class="p">.</span><span class="nb">log</span><span class="p">(</span><span class="s">&#39;hello&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">hi</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="p">);</span>
+<span class="nx">hi</span><span class="p">.</span><span class="nx">greeding</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">);</span>
 <span class="p">};</span>
-<span class="n">hi</span><span class="p">.</span><span class="n">greeding</span><span class="p">();</span>
+<span class="nx">hi</span><span class="p">.</span><span class="nx">greeding</span><span class="p">();</span>
 </pre></div>
 
 
@@ -147,9 +161,9 @@ All dynamically typed languages need a strong typing system at runtime or else t
 <li>Array也是一个Object，这样通过方括号的形式在Array()就自然了。</li>
 <li>可以将变量，作为Object中成员的索引。</li>
 </ol>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">string1</span> <span class="p">=</span> <span class="s">&#39;foo&#39;</span><span class="p">;</span>
-<span class="n">var</span> <span class="n">string2</span> <span class="p">=</span> <span class="s">&#39;bar&#39;</span><span class="p">;</span>
-<span class="n">console</span><span class="p">.</span><span class="nb">log</span><span class="p">(</span><span class="n">foobarObject</span><span class="p">[</span><span class="n">string1</span> <span class="o">+</span> <span class="n">string2</span><span class="p">]);</span>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">string1</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">foo</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">string2</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">bar</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">foobarObject</span><span class="p">[</span><span class="n">string1</span> <span class="o">+</span> <span class="n">string2</span><span class="p">]);</span>
 </pre></div>
 
 
@@ -169,90 +183,113 @@ All dynamically typed languages need a strong typing system at runtime or else t
 
 
 <p>这里Worker继承了Person</p>
+<h1>Oriented Object Porgramming in Javascript</h1>
+<p>javascript的面向对象编程。如果html中的每一块(比如<div></div>)看做是一个object。在这个object里面添加一下function代表与用户的交互。但是这样很容易出现多个object相互之间调用的情况。很麻烦。那么如何使得js的object之间尽可能解耦呢？</p>
             </div>
             <!-- /.entry-content -->
         </article>
     </section>
 
         </div>
-        <div class="col-lg-3 well well-sm" id="sidebar">
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
 <aside>
     <section>
         <ul class="list-group list-group-flush">
 
 
 
-            <li class="list-group-item"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
-                <li class="list-group-item tag-1">
-                    <a href="/tag/python.html">
-                        Python
-                    </a>
-                </li>
-                <li class="list-group-item tag-1">
-                    <a href="/tag/javascript.html">
-                        javascript
-                    </a>
-                </li>
-                <li class="list-group-item tag-1">
-                    <a href="/tag/tools.html">
-                        tools
-                    </a>
-                </li>
-                <li class="list-group-item tag-2">
-                    <a href="/tag/vim.html">
-                        Vim
-                    </a>
-                </li>
-                <li class="list-group-item tag-2">
-                    <a href="/tag/system.html">
-                        System
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/decorator.html">
-                        decorator
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/decorators.html">
-                        decorators
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/closure.html">
-                        closure
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/dictionary.html">
-                        dictionary
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/django.html">
-                        Django
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/pelican.html">
-                        Pelican
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/git.html">
-                        git
-                    </a>
-                </li>
+                <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/javascript.html">
+                                javascript
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/tools.html">
+                                tools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/system.html">
+                                System
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/vim.html">
+                                Vim
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/git.html">
+                                git
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/dictionary.html">
+                                dictionary
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorators.html">
+                                decorators
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/closure.html">
+                                closure
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorator.html">
+                                decorator
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
         </ul>
     </section>
+
 </aside>        </div>
     </div>
 </div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Qian Zhu
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
+<script src="/theme/js/custom.js"></script>
+
 </body>
 </html>

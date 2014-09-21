@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Techology &amp; Finance</title><link href="/" rel="alternate"></link><link href="/feeds/techology.atom.xml" rel="self"></link><id>/</id><updated>2014-08-21T00:00:00+02:00</updated><entry><title>Git小技巧.md</title><link href="/gitxiao-ji-qiao-md.html" rel="alternate"></link><updated>2014-08-21T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-08-21:gitxiao-ji-qiao-md.html</id><summary type="html">&lt;ol&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Techology &amp; Finance</title><link href="/" rel="alternate"></link><link href="/feeds/tools.atom.xml" rel="self"></link><id>/</id><updated>2014-08-21T00:00:00+02:00</updated><entry><title>Git小技巧.md</title><link href="/gitxiao-ji-qiao-md.html" rel="alternate"></link><updated>2014-08-21T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-08-21:gitxiao-ji-qiao-md.html</id><summary type="html">&lt;ol&gt;
 &lt;li&gt;git push origin :temp  -- 删除remote的temp branch。意思是用空的branch替换temp branch&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="git"></category><category term="tools"></category></entry><entry><title>Blocking vs Non-blocking, Syn vs Asyc</title><link href="/Blocking%20vs%20Non-blocking,%20Syn%20vs%20Asyc.html" rel="alternate"></link><updated>2014-07-26T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-07-26:Blocking vs Non-blocking, Syn vs Asyc.html</id><summary type="html">&lt;h1&gt;Simplified matrix of basic Linux I/O models&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="Simplified matrix of basic Linux I/O models" src="images/System/io_type.gif" /&gt;&lt;/p&gt;
-&lt;h1&gt;Blocking vs Non-blocking&lt;/h1&gt;
-&lt;p&gt;这两者的区分仅仅在于是否会阻塞当前进程上。如果会阻塞就是blocking,如果不会阻塞，无论是采用什么方法，都属于non-blocking.&lt;/p&gt;
-&lt;p&gt;比如在Linux中，通过fcntl可以设置O_NONBLOCK。当文件当前不可读/可写时，自动返回一个错误值。这属于sync and non-blocking.&lt;/p&gt;
-&lt;h1&gt;Asynchronous vs Synchronous&lt;/h1&gt;
-&lt;p&gt;区别主要是同步的方式。Synchronous通过时钟同步，Asynchronous通过信号同步。Asynchronous and blocking I/O也是存在的。比如Linux中select的系统调用。&lt;/p&gt;
-&lt;p&gt;select监视若干个文件并且在background运行一个timer，如果文件中有一个可以读/写，或者timer到期，都返回。会阻塞当前进程，但是确实Async&lt;/p&gt;</summary><category term="System"></category></entry><entry><title>Pratical Vim</title><link href="/pratical_vim.html" rel="alternate"></link><updated>2014-07-19T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-07-19:pratical_vim.html</id><summary type="html">&lt;h1&gt;What is the idea behind vim?&lt;/h1&gt;
+&lt;/ol&gt;</summary><category term="git"></category><category term="tools"></category></entry><entry><title>Pratical Vim</title><link href="/pratical_vim.html" rel="alternate"></link><updated>2014-07-19T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-07-19:pratical_vim.html</id><summary type="html">&lt;h1&gt;What is the idea behind vim?&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Vim is optimized for repetition.Act,repeat, reverse &lt;/p&gt;
 &lt;/blockquote&gt;
@@ -166,7 +159,7 @@
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;qian&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zhu&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;qian&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;zhu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;gh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;force&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/qian-zhu/qian-zhu.github.io.git gh-pages:master (--force)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

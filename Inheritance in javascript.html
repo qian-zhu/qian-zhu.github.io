@@ -3,34 +3,41 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Inheritance in js</title>
+    <title>Inheritance in js - Techology & Finance</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
 
     <!-- Open Graph tags -->
-
+        <meta property="og:site_name" content="Techology & Finance" />
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Inheritance in js"/>
             <meta property="og:url" content="/Inheritance in javascript.html"/>
             <meta property="og:description" content="Inheritance in javacript"/>
+            <meta property="article:published_time" content="2014-07-26" />
+                <meta property="article:section" content="Javascript" />
+                <meta property="article:tag" content="javascript" />
+                <meta property="article:author" content="Qian Zhu" />
+
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="/theme/css/pygments.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
-    <!-- JavaScript plugins (requires jQuery) -->
-    <script src="http://code.jquery.com/jquery.js"></script>
+        <link href="/theme/css/custom.css" rel="stylesheet">
 
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Techology & Finance ATOM Feed"/>
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -39,7 +46,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="" class="navbar-brand">Techology & Finance</a>
+            <a href="/" class="navbar-brand">
+Techology & Finance            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -50,20 +58,24 @@
                             <a href="/category/python.html">Python</a>
                         </li>
                         <li >
-                            <a href="/category/techology.html">Techology</a>
+                            <a href="/category/system.html">System</a>
+                        </li>
+                        <li >
+                            <a href="/category/tools.html">Tools</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-</nav>
-<!-- /.navbar -->
+</div> <!-- /.navbar -->
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-sm-9">
+
     <section id="content">
         <article>
             <header class="page-header">
@@ -81,40 +93,41 @@
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="icon-calendar"></i>Sat 26 July 2014
+        <i class="fa fa-calendar"></i><time datetime="2014-07-26T00:00:00"> Sat 26 July 2014</time>
     </span>
 
 
 
 <span class="label label-default">Tags</span>
 	<a href="/tag/javascript.html">javascript</a>
+    
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>JavaScript is a <strong>class-free</strong>, <strong>object-oriented</strong> language, and as such, it uses <strong>prototypal inheritance</strong> instead of classical inheritance. <a href="http://www.crockford.com/javascript/inheritance.html">1</a></p>
 <p>有几点关键的:</p>
 <p>Javascript没有class的概念，在class based的语言中(Python,java,C++)，开始先定义一个class，然后再跟进这个class实例化一个object。在JS中，object是从另一个object创建（不是实例化）的。</p>
 <p>比如:</p>
-<div class="highlight"><pre><span class="k">function</span><span class="w"> </span><span class="nf">Vehicle</span><span class="p">(</span>hasEngine,hasWheels<span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="nx">hasEngine</span><span class="p">,</span><span class="nx">hasWheels</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">hasEngine</span> <span class="p">=</span> <span class="n">hasEngine</span> <span class="o">||</span> <span class="n">false</span><span class="p">;</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">hasWheels</span> <span class="p">=</span> <span class="n">hasWheels</span> <span class="o">||</span> <span class="n">false</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">hasEngine</span> <span class="o">=</span> <span class="nx">hasEngine</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">hasWheels</span> <span class="o">=</span> <span class="nx">hasWheels</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="n">var</span> <span class="n">v</span> <span class="p">=</span> <span class="n">Vehicle</span><span class="p">(</span><span class="n">true</span><span class="p">,</span><span class="n">true</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
 </pre></div>
 
 
 <p>这里Vehicle是一个function object. v是一个通过这个function object创建的object.</p>
 <p>Prototype构成了一个chain. 用于实现继承。比如</p>
-<div class="highlight"><pre><span class="k">function</span><span class="w"> </span><span class="nf">Car</span><span class="p">(</span>make,model,hp<span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">Car</span><span class="p">(</span><span class="nx">make</span><span class="p">,</span><span class="nx">model</span><span class="p">,</span><span class="nx">hp</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">hp</span> <span class="p">=</span> <span class="n">hp</span><span class="p">;</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">make</span> <span class="p">=</span> <span class="n">make</span><span class="p">;</span>
-    <span class="n">this</span><span class="p">.</span><span class="n">model</span> <span class="p">=</span> <span class="n">model</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">hp</span> <span class="o">=</span> <span class="nx">hp</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">make</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">model</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="n">Car</span><span class="p">.</span><span class="n">prototype</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Vehicle</span><span class="p">(</span><span class="n">true</span><span class="p">,</span><span class="n">true</span><span class="p">);</span> <span class="o">//</span><span class="n">Car</span><span class="p">.</span><span class="n">prototype</span> 指向<span class="n">Vehicle</span>
-<span class="n">Car</span><span class="p">.</span><span class="n">prototype</span><span class="p">.</span><span class="n">constructor</span> <span class="p">=</span> <span class="n">Car</span><span class="p">;</span><span class="o">//</span>使得<span class="n">instance</span> <span class="n">object</span>的<span class="n">constructor</span>指向<span class="n">Car</span>
-<span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Car</span><span class="p">(</span><span class="s">&#39;audi&#39;</span><span class="p">,</span><span class="s">&#39;a6&#39;</span><span class="p">,</span>120<span class="p">);</span>
-<span class="n">console</span><span class="p">.</span><span class="nb">log</span><span class="p">(</span><span class="n">car</span><span class="p">.</span><span class="n">hasWheels</span><span class="p">)</span> <span class="o">//</span>这里输出<span class="n">true</span>
+<span class="nx">Car</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span> <span class="c1">//Car.prototype 指向Vehicle</span>
+<span class="nx">Car</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Car</span><span class="p">;</span><span class="c1">//使得instance object的constructor指向Car</span>
+<span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">(</span><span class="s1">&#39;audi&#39;</span><span class="p">,</span><span class="s1">&#39;a6&#39;</span><span class="p">,</span><span class="mi">120</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">hasWheels</span><span class="p">)</span> <span class="c1">//这里输出true</span>
 </pre></div>
 
 
@@ -126,84 +139,105 @@
     </section>
 
         </div>
-        <div class="col-lg-3 well well-sm" id="sidebar">
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
 <aside>
     <section>
         <ul class="list-group list-group-flush">
 
 
 
-            <li class="list-group-item"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
-                <li class="list-group-item tag-1">
-                    <a href="/tag/python.html">
-                        Python
-                    </a>
-                </li>
-                <li class="list-group-item tag-1">
-                    <a href="/tag/javascript.html">
-                        javascript
-                    </a>
-                </li>
-                <li class="list-group-item tag-1">
-                    <a href="/tag/tools.html">
-                        tools
-                    </a>
-                </li>
-                <li class="list-group-item tag-2">
-                    <a href="/tag/vim.html">
-                        Vim
-                    </a>
-                </li>
-                <li class="list-group-item tag-2">
-                    <a href="/tag/system.html">
-                        System
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/decorator.html">
-                        decorator
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/decorators.html">
-                        decorators
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/closure.html">
-                        closure
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/dictionary.html">
-                        dictionary
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/django.html">
-                        Django
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/pelican.html">
-                        Pelican
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="/tag/git.html">
-                        git
-                    </a>
-                </li>
+                <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/javascript.html">
+                                javascript
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/tools.html">
+                                tools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/system.html">
+                                System
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/vim.html">
+                                Vim
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/git.html">
+                                git
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/dictionary.html">
+                                dictionary
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorators.html">
+                                decorators
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/closure.html">
+                                closure
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorator.html">
+                                decorator
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
         </ul>
     </section>
+
 </aside>        </div>
     </div>
 </div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Qian Zhu
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
+<script src="/theme/js/custom.js"></script>
+
 </body>
 </html>
