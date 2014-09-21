@@ -134,6 +134,16 @@ class Field(object):
 ```
 在form这个父类里面clean没有定义，直接返回当前的cleaned_data,在具体的form类时，如果我们要对整个form进行validate，需要定义clean函数并且返回cleaned_data.
 
+综上所述，执行validate的顺序如下:
+
+1. **field**: clean(self,data,initial=None)调用:
+  1.to_python() : 把数据转换成python object
+  2.validate() :  handles field-specific validation that is not suitable for a validator
+   3.run_validator() :  runs all of the field’s validators and aggregates all the errors into a single ValidationError
+
+2.  clean_<fieldname>() method in a **form subclass**
+3. The **Form subclass’s** clean() method
+
 ##ModelForm
 ModelForm其实就是根据对应的Model自动生成相应的Form.所以它不仅有:
 

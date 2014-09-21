@@ -83,6 +83,8 @@ Worker.prototype = new Person;
 ```
 这里Worker继承了Person
 
+# Oriented Object Porgramming in Javascript
+javascript的面向对象编程。如果html中的每一块(比如<div></div>)看做是一个object。在这个object里面添加一下function代表与用户的交互。但是这样很容易出现多个object相互之间调用的情况。很麻烦。那么如何使得js的object之间尽可能解耦呢？
 
 [1]: http://www.smashingmagazine.com/2013/04/18/introduction-to-programming-type-systems/
 [2]: http://en.wikipedia.org/wiki/Prototype-based_programming
