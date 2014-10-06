@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>optimization and style - Techology & Finance</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Techology & Finance" />
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="optimization and style"/>
+            <meta property="og:url" content="/better-jquery-code.html"/>
+            <meta property="og:description" content="javascript的code style"/>
+            <meta property="article:published_time" content="2014-10-06" />
+                <meta property="article:section" content="Javascript" />
+                <meta property="article:author" content="Qian Zhu" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/theme/css/custom.css" rel="stylesheet">
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Techology & Finance ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Techology & Finance            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/javascript.html">Javascript</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+                        <li >
+                            <a href="/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="/category/system.html">System</a>
+                        </li>
+                        <li >
+                            <a href="/category/tools.html">Tools</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/better-jquery-code.html"
+                       rel="bookmark"
+                       title="Permalink to optimization and style">
+                        optimization and style
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-10-06T00:00:00"> Mon 06 October 2014</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2>Cache</h2>
+<p>(From: http://modernweb.com/2013/11/25/writing-better-jquery-code/)
+DOM的遍历很耗费时间，因此最好是将重复使用的元素缓存下来。</p>
+<div class="highlight"><pre><span class="c1">// bad</span>
+
+<span class="nx">h</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#element&#39;</span><span class="p">).</span><span class="nx">height</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#element&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="nx">h</span><span class="o">-</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="c1">// good</span>
+
+<span class="nx">$element</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#element&#39;</span><span class="p">);</span>
+<span class="nx">h</span> <span class="o">=</span> <span class="nx">$element</span><span class="p">.</span><span class="nx">height</span><span class="p">();</span>
+<span class="nx">$element</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="nx">h</span><span class="o">-</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="c1">// bad</span>
+
+<span class="kd">var</span> 
+    <span class="nx">$container</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#container&#39;</span><span class="p">),</span>
+    <span class="nx">$containerLi</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#container li&#39;</span><span class="p">),</span>
+    <span class="nx">$containerLiSpan</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#container li span&#39;</span><span class="p">);</span>
+
+<span class="c1">// better (faster)</span>
+
+<span class="kd">var</span> 
+    <span class="nx">$container</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#container &#39;</span><span class="p">),</span>
+    <span class="nx">$containerLi</span> <span class="o">=</span> <span class="nx">$container</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">),</span>
+    <span class="nx">$containerLiSpan</span><span class="o">=</span> <span class="nx">$containerLi</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h2>Detach Elements when doing heavy manipulations</h2>
+<p>(From: http://modernweb.com/2013/11/25/writing-better-jquery-code/)
+这里不清楚为什么这么做。detach 和remove不同的就是其会将和element对应的data和event handler保存下来。当之后被detach的元素又被append到原来的位置时，就恢复了原来的状态。但是为什么在进行元素进行大量操作之前要将其detach呢？</p>
+<div class="highlight"><pre><span class="c1">// bad</span>
+
+<span class="kd">var</span> 
+    <span class="nx">$container</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#container&quot;</span><span class="p">),</span>
+    <span class="nx">$containerLi</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#container li&quot;</span><span class="p">),</span>
+    <span class="nx">$element</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="nx">$element</span> <span class="o">=</span> <span class="nx">$containerLi</span><span class="p">.</span><span class="nx">first</span><span class="p">();</span> 
+<span class="c1">//... a lot of complicated things</span>
+
+<span class="c1">// better</span>
+
+<span class="kd">var</span> 
+    <span class="nx">$container</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#container&quot;</span><span class="p">),</span>
+    <span class="nx">$containerLi</span> <span class="o">=</span> <span class="nx">$container</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">),</span>
+    <span class="nx">$element</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="nx">$element</span> <span class="o">=</span> <span class="nx">$containerLi</span><span class="p">.</span><span class="nx">first</span><span class="p">().</span><span class="nx">detach</span><span class="p">();</span> 
+<span class="c1">//...a lot of complicated things</span>
+
+<span class="nx">$container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$element</span><span class="p">);</span>
+</pre></div>
+
+
+<h2>保持可读性</h2>
+<h3>1.多用链式操作</h3>
+<div class="highlight"><pre><span class="c1">// bad</span>
+
+<span class="nx">$second</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="nx">$second</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello everybody&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">$second</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+<span class="nx">$second</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;120px&#39;</span><span class="p">},</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="c1">// better</span>
+
+<span class="nx">$second</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="nx">$second</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello everybody&#39;</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">fadeIn</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;120px&#39;</span><span class="p">},</span><span class="mi">500</span><span class="p">);</span>
+</pre></div>
+
+
+<h3>2. 缩进的使用</h3>
+<div class="highlight"><pre><span class="c1">// bad</span>
+
+<span class="nx">$second</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="nx">$second</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello everybody&#39;</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">fadeIn</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;120px&#39;</span><span class="p">},</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="c1">// better</span>
+
+<span class="nx">$second</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="nx">$second</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello everybody&#39;</span><span class="p">);})</span>
+    <span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;120px&#39;</span><span class="p">},</span><span class="mi">500</span><span class="p">);</span>
+</pre></div>
+
+
+<h2>Short-Circuit Evaluation</h2>
+<p>(From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-Circuit_Evaluation)</p>
+<div class="highlight"><pre><span class="c1">// bad</span>
+
+<span class="kd">function</span> <span class="nx">initVar</span><span class="p">(</span><span class="nx">$myVar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">$myVar</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$myVar</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#selector&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// better</span>
+
+<span class="kd">function</span> <span class="nx">initVar</span><span class="p">(</span><span class="nx">$myVar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$myVar</span> <span class="o">=</span> <span class="nx">$myVar</span> <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#selector&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>这个技巧不单单是在javascript里面了，很多语言都适用</p>
+<h2>当需要用循环(for)的时候想一想有没有另外已有的办法?</h2>
+<div class="highlight"><pre><span class="c1">//1. join string</span>
+<span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span><span class="s1">&#39;item2&#39;</span><span class="p">,</span><span class="s1">&#39;item3&#39;</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="s1">&#39;&lt;ul&gt;&lt;li&gt;&#39;</span> <span class="o">+</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&lt;/li&gt;&lt;li&gt;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&lt;/ul&gt;&#39;</span><span class="p">;</span>
+
+<span class="c1">//2. transverse array</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="nx">value</span><span class="p">){</span>
+    <span class="c1">//to do something</span>
+<span class="p">});</span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/javascript.html">
+                                javascript
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="/tag/tools.html">
+                                tools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/system.html">
+                                System
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="/tag/vim.html">
+                                Vim
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorator.html">
+                                decorator
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorators.html">
+                                decorators
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/git.html">
+                                git
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/dictionary.html">
+                                dictionary
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/closure.html">
+                                closure
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Qian Zhu
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+<script src="/theme/js/custom.js"></script>
+
+</body>
+</html>

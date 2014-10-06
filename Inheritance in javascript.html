@@ -55,6 +55,9 @@ Techology & Finance            </a>
                             <a href="/category/javascript.html">Javascript</a>
                         </li>
                         <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+                        <li >
                             <a href="/category/python.html">Python</a>
                         </li>
                         <li >
@@ -105,7 +108,7 @@ Techology & Finance            </a>
                 </div>
                 <p>JavaScript is a <strong>class-free</strong>, <strong>object-oriented</strong> language, and as such, it uses <strong>prototypal inheritance</strong> instead of classical inheritance. <a href="http://www.crockford.com/javascript/inheritance.html">1</a></p>
 <p>有几点关键的:</p>
-<p>Javascript没有class的概念，在class based的语言中(Python,java,C++)，开始先定义一个class，然后再跟进这个class实例化一个object。在JS中，object是从另一个object创建（不是实例化）的。</p>
+<p>1.Javascript没有class的概念，在class based的语言中(Python,java,C++)，开始先定义一个class，然后再跟进这个class实例化一个object。在JS中，object是从另一个object创建（不是实例化）的。</p>
 <p>比如:</p>
 <div class="highlight"><pre><span class="kd">function</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="nx">hasEngine</span><span class="p">,</span><span class="nx">hasWheels</span><span class="p">)</span>
 <span class="p">{</span>
@@ -131,8 +134,36 @@ Techology & Finance            </a>
 </pre></div>
 
 
-<p>可以看到这里prototype based实现继承的一个好处，能够给被继承的object传参数。当然在class based的方式中也可以通过构造函数，改变父类中的值。但是没这么清楚，隔离。</p>
-<p>一个object的prototype是所有被这个object创建的instance object的公共部分。</p>
+<p>这里是先创建了两个functions：Car和Vehicle, 并且把Vehicle作为Car的prototype.</p>
+<p>2.当一个function创建时，其prototype指向新创建对象的prototype。
+比如:</p>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// and inherited method &quot;calculate&quot;</span>
+<span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">calculate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">z</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">z</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="cm">/*</span>
+<span class="cm">Foo {y: 20, x: 10, calculate: function}</span>
+<span class="cm">    y: 20</span>
+<span class="cm">    __proto__: Foo</span>
+<span class="cm">        calculate: function (z) {...}</span>
+<span class="cm">        constructor: function Foo(y) {..}</span>
+<span class="cm">        x: 10</span>
+<span class="cm">        __proto__: Object</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当前objects之间的关系是:
+<img alt="" src="images/Javascript/constructor-proto-chain.png" /> </p>
             </div>
             <!-- /.entry-content -->
         </article>
@@ -150,13 +181,13 @@ Techology & Finance            </a>
                 <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                     <ul class="list-group " id="tags">
                         <li class="list-group-item tag-1">
-                            <a href="/tag/python.html">
-                                Python
+                            <a href="/tag/javascript.html">
+                                javascript
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
-                            <a href="/tag/javascript.html">
-                                javascript
+                            <a href="/tag/python.html">
+                                Python
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
@@ -180,8 +211,18 @@ Techology & Finance            </a>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="/tag/decorator.html">
+                                decorator
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="/tag/pelican.html">
                                 Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/decorators.html">
+                                decorators
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -195,18 +236,8 @@ Techology & Finance            </a>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="/tag/decorators.html">
-                                decorators
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="/tag/closure.html">
                                 closure
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/decorator.html">
-                                decorator
                             </a>
                         </li>
                     </ul>
