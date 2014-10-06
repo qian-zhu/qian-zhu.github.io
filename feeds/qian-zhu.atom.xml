@@ -548,7 +548,7 @@ DOM的遍历很耗费时间，因此最好是将重复使用的元素缓存下�
 
 
 &lt;p&gt;当前objects之间的关系是:
-&lt;img alt="" src="/images/Javascript/constructor-proto-chain.png" /&gt; &lt;/p&gt;</summary><category term="javascript"></category></entry><entry><title>Event Loop</title><link href="/event%20loop.html" rel="alternate"></link><updated>2014-07-26T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-07-26:event loop.html</id><summary type="html">&lt;h1&gt;Event loop and message queue&lt;/h1&gt;
+&lt;img alt="" src="http://dmitrysoshnikov.com/wp-content/uploads/constructor-proto-chain.png" /&gt; &lt;/p&gt;</summary><category term="javascript"></category></entry><entry><title>Event Loop</title><link href="/event%20loop.html" rel="alternate"></link><updated>2014-07-26T00:00:00+02:00</updated><author><name>Qian Zhu</name></author><id>tag:,2014-07-26:event loop.html</id><summary type="html">&lt;h1&gt;Event loop and message queue&lt;/h1&gt;
 &lt;p&gt;Event-loop和Message Queue是js中实现callback的方法。比如:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;init&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
     &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
