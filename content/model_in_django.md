@@ -2,9 +2,10 @@ Title: Model in Django
 Date: 2014-09-10
 Tags: Python, Django 
 Slug: model_in_django
+Category: Python
 Summary: Model in Django
 
-##1. Model method vs Model manager
+## Model method vs Model manager
 **Model method** define custom methods on a model to add custom “**row-level**” functionality to your **objects**.
 
  Whereas **Manager methods** are intended to do “**table-wide**” things, model methods should act on a particular model instance.
@@ -74,7 +75,7 @@ class DahlBookManager(models.Manager):
 
 
 
-##2. Model Permission
+## Model Permission
 Django的permission系统即可以针对一个Model,也可以针对一个Model的Instance.
 
 django.contrib.auth.models中有User这个Model.其中有一个ManyToMany relationship to django.contrib.auth.models.Permission的field: user_permissions
@@ -91,9 +92,6 @@ has_perm(perm,object=None)
 >The simplest way to think of a model field is that it provides a way to take a normal Python object – string, boolean, datetime, or something more complex like Hand – and convert it to and from a format that is useful when dealing with the database (and serialization, but, as we’ll see later, that falls out fairly naturally once you have the database side under control).
 
 就是一个interface或者channel，专门处理python本身的对象和database数据之间的转换
-
-
-
 
 
 [1]: https://docs.djangoproject.com/en/1.6/topics/auth/default/

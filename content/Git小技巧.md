@@ -1,5 +1,6 @@
 Title: Git小技巧.md
 Date: 2014-08-21
+Category:Tools
 Tags:git,tools
 Slugs:
 Summary:遇到的git的小技巧

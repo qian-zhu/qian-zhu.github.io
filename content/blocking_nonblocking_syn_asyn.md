@@ -1,11 +1,12 @@
 Title: Blocking vs Non-blocking, Syn vs Asyc 
 Date: 2014-07-26
+Category: System
 Tags: System 
 Slug: Blocking vs Non-blocking, Syn vs Asyc 
 Summary: Discuss these definition 
 
 #Simplified matrix of basic Linux I/O models
-![Simplified matrix of basic Linux I/O models](images/System/io_type.gif)
+![Simplified matrix of basic Linux I/O models]({filename}/images/io_type.gif)
 
 # Blocking vs Non-blocking
 这两者的区分仅仅在于是否会阻塞当前进程上。如果会阻塞就是blocking,如果不会阻塞，无论是采用什么方法，都属于non-blocking.

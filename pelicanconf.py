@@ -8,17 +8,17 @@ SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Asia/Shanghai'
 
-DEFAULT_LANG = u'en'
+DEFAULT_LANG = u'cn'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
-THEME='pelican-bootstrap3'
-CUSTOM_CSS = 'theme/css/custom.css'
+THEME='gum'
+#CUSTOM_CSS = 'theme/css/custom.css'
 STATIC_PATHS = ["images", ]
 # Blogroll
 #LINKS = (('Pelican', 'http://getpelican.com/'),

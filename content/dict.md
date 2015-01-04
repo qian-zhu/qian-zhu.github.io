@@ -1,5 +1,6 @@
 Title:  Items order in dictionary 
 Date: 2014-08-05
+Category: Python
 Tags: python, dictionary
 Slug: dictionary in python 
 Summary: item order in python dictionary 
@@ -28,7 +29,7 @@ for key,value in d.iteritems():
     print key.__name__
     print bin(id(key)/16)
 ```
-通过这个示例程序，我们发现为什么id(x)/16的后8位在每次运行都是相同的?在Python中，id就是object的内存地址。为什么id(x)/16会一直相同的？难道是因为Python中，dict这一块内存都是32字节对其的的？
+通过这个示例程序，我们发现为什么id(x)/16的后8位在每次运行都是相同的?在Python中，id就是object的内存地址。为什么id(x)/16会一直相同的？难道是因为Python中，dict这一块内存都是32字节对齐？
 
 [1]: http://en.wikipedia.org/wiki/Hash_table#Open_addressing
 [2]: http://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33

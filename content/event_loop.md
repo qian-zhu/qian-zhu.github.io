@@ -1,5 +1,6 @@
 Title: Event Loop 
 Date: 2014-07-26
+Category: Javascript
 Tags: System 
 Slug: event loop 
 Summary: Discuss event loop
